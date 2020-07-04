@@ -1,0 +1,57 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+group 'org.casestudy'
+version '1.0'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.11'
+
+
+    //hibernate
+    compile group: 'org.hibernate', name: 'hibernate-core', version: '5.4.3.Final'
+    compile group: 'org.hibernate', name: 'hibernate-entitymanager', version: '5.4.3.Final'
+    compile group: 'javax.servlet', name: 'javax.servlet-api', version: '3.1.0'
+    //Spring WebMVC
+    compile group: 'org.springframework', name: 'spring-webmvc', version: '5.1.5.RELEASE'
+
+    //Spring ORM
+    compile group: 'org.springframework', name: 'spring-orm', version: '5.1.5.RELEASE'
+
+    //ThymeLeaf
+    compile group: 'org.thymeleaf', name: 'thymeleaf-spring4', version: '3.0.11.RELEASE'
+    compile group: 'nz.net.ultraq.thymeleaf', name: 'thymeleaf-layout-dialect', version: '1.2'
+
+    //Spring data jpa include repository
+    compile group: 'org.springframework.data', name: 'spring-data-jpa', version: '1.11.12.RELEASE'
+
+    //JavaX validation & Hibernate validator
+    compile group: 'org.hibernate.validator', name: 'hibernate-validator', version: '6.1.5.Final'
+    compile group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
+
+    //Spring aspects AOP
+    compile group: 'org.springframework', name: 'spring-aspects', version: '5.1.9.RELEASE'
+
+    // https://mvnrepository.com/artifact/org.springframework/spring-tx
+    compile group: 'org.springframework', name: 'spring-tx', version: '5.1.5.RELEASE'
+
+    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.8'
+
+    //Springsecurity
+    compile group: 'org.springframework.security', name: 'spring-security-web', version: '4.2.3.RELEASE'
+    compile group: 'org.springframework.security', name: 'spring-security-config', version: '4.2.3.RELEASE'
+    compile group: 'org.springframework.security', name: 'spring-security-taglibs', version: '4.2.3.RELEASE'
+
+    //Junit test
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
