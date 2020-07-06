@@ -12,4 +12,9 @@ public class HomeController {
         return "index";
     }
 
+    @GetMapping("/about")
+    public String getAboutPage(){
+        return "about";
+    }
+
 }

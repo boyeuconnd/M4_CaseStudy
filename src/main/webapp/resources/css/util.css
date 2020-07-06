@@ -3007,7 +3007,7 @@ TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT
 	font-weight: 700;
 	font-size: 50px;
 	line-height: 1.2;
-	color: white;
+	color: black;
 	text-transform: uppercase;
 	letter-spacing: 6px;
 	word-spacing: 6px;
@@ -3400,7 +3400,7 @@ SHAPE SHAPE SHAPE SHAPE SHAPE SHAPE SHAPE SHAPE SHAPE SHAPE
 }
 
 .size4 {
-	width: 150px;
+	width: 170px;
 	height: 60px;
 }
 
@@ -3420,7 +3420,7 @@ SHAPE SHAPE SHAPE SHAPE SHAPE SHAPE SHAPE SHAPE SHAPE SHAPE
 }
 
 .size8 {
-	width: 190px;
+	width: 150px;
 	height: 60px;
 }
 
