@@ -1,6 +1,14 @@
 package codegym;
 
 import codegym.filter.CharacterSetFilter;
+import codegym.service.RoleService;
+import codegym.service.StaffService;
+import codegym.service.impl.RoleServiceImpl;
+import codegym.service.impl.StaffServiceImpl;
+import codegym.service.impl.staff.RankServiceImpl;
+import codegym.service.impl.staff.StatusServiceImpl;
+import codegym.service.staff.RankService;
+import codegym.service.staff.StatusService;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
@@ -125,5 +133,23 @@ public class AppConfiguration extends WebMvcConfigurerAdapter implements Applica
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
 
+    }
+
+    @Bean
+    public StaffService staffService(){
+        return new StaffServiceImpl();
+    }
+
+    @Bean
+    public RankService rankService(){
+        return new RankServiceImpl();
+    }
+    @Bean
+    public StatusService statusService(){
+        return new StatusServiceImpl();
+    }
+    @Bean
+    public RoleService roleService(){
+        return new RoleServiceImpl();
     }
 }
