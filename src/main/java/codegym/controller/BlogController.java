@@ -11,6 +11,6 @@ public class BlogController {
 
     @GetMapping("")
     public String getBlogPage(){
-        return "blog";
+        return "blogs/blog";
     }
 }
