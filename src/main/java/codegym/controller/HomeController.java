@@ -9,7 +9,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String getHomePage(){
-        return "index4";
+        return "index";
     }
 
     @GetMapping("/about")
