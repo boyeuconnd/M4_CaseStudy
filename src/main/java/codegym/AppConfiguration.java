@@ -3,13 +3,17 @@ package codegym;
 import codegym.filter.CharacterSetFilter;
 import codegym.service.RoleService;
 import codegym.service.StaffService;
+import codegym.service.UserService;
 import codegym.service.impl.RoleServiceImpl;
 import codegym.service.impl.StaffServiceImpl;
+import codegym.service.impl.UserServiceImpl;
 import codegym.service.impl.staff.RankServiceImpl;
 import codegym.service.impl.staff.StatusServiceImpl;
 import codegym.service.staff.RankService;
 import codegym.service.staff.StatusService;
+import org.springframework.core.env.Environment;
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -106,7 +110,7 @@ public class AppConfiguration extends WebMvcConfigurerAdapter implements Applica
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource.setUrl("jdbc:mysql://localhost:3306/m4_case");
         dataSource.setUsername("root");
-        dataSource.setPassword("123456");
+        dataSource.setPassword("1234");
         return dataSource;
     }
 
@@ -133,6 +137,8 @@ public class AppConfiguration extends WebMvcConfigurerAdapter implements Applica
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
 
+        registry.addResourceHandler("/img/**").addResourceLocations("file:D:/Image/XR.1238");
+
     }
 
     @Bean
@@ -152,4 +158,12 @@ public class AppConfiguration extends WebMvcConfigurerAdapter implements Applica
     public RoleService roleService(){
         return new RoleServiceImpl();
     }
+
+    @Bean
+    public UserService userService(){
+        return new UserServiceImpl();
+    }
+
+    @Autowired
+    Environment env;
 }
