@@ -1,8 +1,10 @@
 package codegym;
 
 import codegym.filter.CharacterSetFilter;
+import codegym.service.BlogService;
 import codegym.service.RoleService;
 import codegym.service.StaffService;
+import codegym.service.impl.BlogServiceImpl;
 import codegym.service.impl.RoleServiceImpl;
 import codegym.service.impl.StaffServiceImpl;
 import codegym.service.impl.staff.RankServiceImpl;
@@ -151,5 +153,10 @@ public class AppConfiguration extends WebMvcConfigurerAdapter implements Applica
     @Bean
     public RoleService roleService(){
         return new RoleServiceImpl();
+    }
+
+    @Bean
+    public BlogService blogService(){
+        return new BlogServiceImpl();
     }
 }
