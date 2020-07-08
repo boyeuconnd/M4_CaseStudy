@@ -15,6 +15,10 @@ public class Users {
     private String firstName;
     private String lastName;
 
+    private String nickName;
+
+    private Float price;
+
     private Timestamp birthday;
 
     private String email;
@@ -26,8 +30,17 @@ public class Users {
     private String password;
 
     @ManyToOne
+    @JoinColumn(name = "status_id")
+    private Status status;
+
+    @ManyToOne
+    @JoinColumn(name = "ranks_id")
+    private Rank rank;
+
+    @ManyToOne
     @JoinColumn(name = "role_id")
-    Role roles;
+    private Role role;
+
 
 
     public Users() {
@@ -73,16 +86,49 @@ public class Users {
         this.email = email;
     }
 
-    public Role getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Role roles) {
-        this.roles = roles;
-    }
 
     public String getUserName() {
         return userName;
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
+    public Float getPrice() {
+        return price;
+    }
+
+    public void setPrice(Float price) {
+        this.price = price;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public Rank getRank() {
+        return rank;
+    }
+
+    public void setRank(Rank rank) {
+        this.rank = rank;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     @Column(nullable = false)

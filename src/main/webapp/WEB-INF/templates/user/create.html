@@ -17,35 +17,42 @@
 						</span>
 
                     <h3 class="tit3 t-center m-b-35 m-t-2">
-                        Staff Register
+                        User Register
                     </h3>
                 </div>
 
-                <form class="wrap-form-booking" th:object="${staff}" method="post">
+                <form class="wrap-form-booking" th:object="${newUser}" method="post">
                     <div class="row">
                         <div class="col-md-6">
-                            <!-- Full Name -->
+                            <!-- First Name -->
                             <span class="txt9">
 									Full Name
 								</span>
                             <div class="wrap-inputname size12 bo2 bo-rad-10 m-t-3 m-b-23">
-                                <input th:field="*{fullName}" class="bo-rad-10 sizefull txt10 p-l-20" type="text"  th:value="*{fullName}" placeholder="Name">
+                                <input th:field="*{firstName}" class="bo-rad-10 sizefull txt10 p-l-20" type="text"  th:value="*{firstName}" placeholder="First Name">
+                            </div>
+                            <!-- Last Name -->
+                            <span class="txt9">
+									Full Name
+								</span>
+                            <div class="wrap-inputname size12 bo2 bo-rad-10 m-t-3 m-b-23">
+                                <input th:field="*{lastName}" class="bo-rad-10 sizefull txt10 p-l-20" type="text"  th:value="*{lastName}" placeholder="Last Name">
                             </div>
 
-                            <!-- Nick Name -->
-                            <span class="txt9">
-									Nick Name
-								</span>
-                            <div class=" size12 bo2 bo-rad-10 m-t-3 m-b-23">
-                                <input th:field="*{nickName}" class="bo-rad-10 sizefull txt10 p-l-20" type="text"  th:value="*{nickName}"/>
+                             Email
+                            <span class="txt9">Email</span>
+                            <div class="wrap-inputemail size12 bo2 bo-rad-10 m-t-3 m-b-23">
+                                <input th:field="*{email}" class="bo-rad-10 sizefull txt10 p-l-20" type="text" th:value="*{email}" placeholder="Email">
                             </div>
+                        </div>
+                        <div class="col-md-6">
                             <!-- User Name -->
                             <span class="txt9">
 									UserName
                             </span>
 
                             <div class=" size12 bo2 bo-rad-10 m-t-3 m-b-23">
-                                <input th:field="*{username}" class="bo-rad-10 sizefull txt10 p-l-20" type="text"  th:value="*{fullName}" placeholder="Name"/>
+                                <input th:field="*{userName}" class="bo-rad-10 sizefull txt10 p-l-20" type="text"  th:value="*{userName}" placeholder="Account"/>
                             </div>
 
                             <!-- Password -->
@@ -54,48 +61,16 @@
                             </span>
 
                             <div class="size12 bo2 bo-rad-10 m-t-3 m-b-23">
-                                <input th:field="*{password}" class="bo-rad-10 sizefull txt10 p-l-20" type="password"  th:value="*{password}">
+                                <input th:field="*{password}" class="bo-rad-10 sizefull txt10 p-l-20" type="password" >
                             </div>
 
-                            <!-- Email -->
-<!--                            <span class="txt9">Email</span>-->
-<!--                            <div class="wrap-inputemail size12 bo2 bo-rad-10 m-t-3 m-b-23">-->
-<!--                                <input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="email" placeholder="Email">-->
-<!--                            </div>-->
-                        </div>
-                        <div class="col-md-6">
-                            <!-- Price -->
+                            <!-- RePassword -->
                             <span class="txt9">
-									Price
+									Retype Password
                             </span>
 
-                            <div class=" pos-relative txt10 size12 bo2 bo-rad-10 m-t-3 m-b-23">
-                                <input class=" bo-rad-10 sizefull txt10 p-l-20" type="number" th:field="*{price}" th:value="*{price}">
-                            </div>
-
-                            <!-- Rank -->
-                            <span class="txt9">
-									Rank
-								</span>
-
-                            <div class="input-group size12 bo2 bo-rad-10 m-t-3 m-b-23">
-
-                                <select class="custom-select sizefull bo-rad-7"   th:field="*{rank}">
-                                    <option th:each="r:${allRanks}" th:value="${r.id}" th:text="${r.ranks}"></option>
-
-                                </select>
-                            </div>
-
-                            <!-- Status -->
-                            <span class="txt9">
-									Status
-								</span>
-
-                            <div class="input-group size12 bo2 bo-rad-10 m-t-3 m-b-23">
-                                <select class="custom-select sizefull bo-rad-7" th:field="*{status}">
-                                    <option th:each="s:${allStatus}" th:value="${s.id}" th:text="${s.statusName}"></option>
-
-                                </select>
+                            <div class="size12 bo2 bo-rad-10 m-t-3 m-b-23">
+                                <input class="bo-rad-10 sizefull txt10 p-l-20" type="password" >
                             </div>
                         </div>
 

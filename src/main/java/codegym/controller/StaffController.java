@@ -48,7 +48,7 @@ public class StaffController {
         return mv;
     }
 
-    @PostMapping("create")
+    @PostMapping("/create")
     public ModelAndView createStaff(@ModelAttribute Staff staff){
         ModelAndView mv = new ModelAndView("staff/create");
         Role staffRole = roleService.getRoleById(2L);
