@@ -3,14 +3,9 @@ package codegym.models;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.persistence.*;
 import java.sql.Timestamp;
 
-@Entity
-@Table(name = "users")
-public class Users {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+public class UsersForm {
     private Long id;
 
     private String firstName;
@@ -24,35 +19,24 @@ public class Users {
 
     private String email;
 
-    @Column(unique = true,nullable = false)
+
     private String userName;
 
-    @Column(nullable = false)
+
     private String password;
 
-    @ManyToOne
-    @JoinColumn(name = "status_id")
+
     private Status status;
 
-    @ManyToOne
-    @JoinColumn(name = "ranks_id")
+
     private Rank rank;
 
-    @ManyToOne
-    @JoinColumn(name = "role_id")
+
     private Role role;
 
-    private String avatar;
+    private MultipartFile avatar;
 
-    public String getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
-    }
-
-    public Users() {
+    public UsersForm() {
     }
 
     public Long getId() {
@@ -79,6 +63,22 @@ public class Users {
         this.lastName = lastName;
     }
 
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
+    public Float getPrice() {
+        return price;
+    }
+
+    public void setPrice(Float price) {
+        this.price = price;
+    }
+
     public Timestamp getBirthday() {
         return birthday;
     }
@@ -95,25 +95,20 @@ public class Users {
         this.email = email;
     }
 
-
     public String getUserName() {
         return userName;
     }
 
-    public String getNickName() {
-        return nickName;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public void setNickName(String nickName) {
-        this.nickName = nickName;
+    public String getPassword() {
+        return password;
     }
 
-    public Float getPrice() {
-        return price;
-    }
-
-    public void setPrice(Float price) {
-        this.price = price;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Status getStatus() {
@@ -140,30 +135,11 @@ public class Users {
         this.role = role;
     }
 
-    @Column(nullable = false)
-    public void setUserName(String userName) {
-        this.userName = userName.toLowerCase();
+    public MultipartFile getAvatar() {
+        return avatar;
     }
 
-    @Column(nullable = false)
-    public String getPassword() {
-        return password;
+    public void setAvatar(MultipartFile avatar) {
+        this.avatar = avatar;
     }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Users(String firstName, String lastName,
-                 String userName, String email,
-                 String password, String avatar){
-        this.firstName=firstName;
-        this.lastName=lastName;
-        this.userName=userName;
-        this.password=password;
-        this.email=email;
-        this.avatar=avatar;
-    }
-
-
 }

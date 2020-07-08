@@ -11,6 +11,7 @@ import codegym.service.impl.staff.RankServiceImpl;
 import codegym.service.impl.staff.StatusServiceImpl;
 import codegym.service.staff.RankService;
 import codegym.service.staff.StatusService;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,7 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -41,6 +43,7 @@ import org.thymeleaf.templatemode.TemplateMode;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
+import java.io.IOException;
 import java.util.Properties;
 
 @Configuration
@@ -49,6 +52,7 @@ import java.util.Properties;
 @ComponentScan("codegym.controller")
 @EnableJpaRepositories("codegym.repositories")
 @EnableSpringDataWebSupport
+@PropertySource("classpath:uploadfile.properties")
 public class AppConfiguration extends WebMvcConfigurerAdapter implements ApplicationContextAware {
 
 
@@ -136,8 +140,9 @@ public class AppConfiguration extends WebMvcConfigurerAdapter implements Applica
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+        String fileUpload = env.getProperty("file_upload");
 
-        registry.addResourceHandler("/img/**").addResourceLocations("file:D:/Image/XR.1238");
+        registry.addResourceHandler("/img/**").addResourceLocations("file:"+fileUpload);
 
     }
 
@@ -166,4 +171,17 @@ public class AppConfiguration extends WebMvcConfigurerAdapter implements Applica
 
     @Autowired
     Environment env;
+
+    //Config FileUpload
+    @Bean(name = "multipartResolver")
+    public CommonsMultipartResolver getResolver() throws IOException {
+        CommonsMultipartResolver resolver = new CommonsMultipartResolver();
+
+        //Set the maximum allowed size (in bytes) for each individual file.
+        resolver.setMaxUploadSizePerFile(5242880);//5MB
+
+        //You may also set other available properties.
+
+        return resolver;
+    }
 }

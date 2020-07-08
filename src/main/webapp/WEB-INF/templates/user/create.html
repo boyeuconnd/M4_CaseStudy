@@ -21,25 +21,21 @@
                     </h3>
                 </div>
 
-                <form class="wrap-form-booking" th:object="${newUser}" method="post">
+                <form class="wrap-form-booking" th:object="${newUser}" method="post" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-md-6">
                             <!-- First Name -->
-                            <span class="txt9">
-									Full Name
-								</span>
+                            <span class="txt9">First Name</span>
                             <div class="wrap-inputname size12 bo2 bo-rad-10 m-t-3 m-b-23">
                                 <input th:field="*{firstName}" class="bo-rad-10 sizefull txt10 p-l-20" type="text"  th:value="*{firstName}" placeholder="First Name">
                             </div>
                             <!-- Last Name -->
-                            <span class="txt9">
-									Full Name
-								</span>
+                            <span class="txt9">Last Name</span>
                             <div class="wrap-inputname size12 bo2 bo-rad-10 m-t-3 m-b-23">
                                 <input th:field="*{lastName}" class="bo-rad-10 sizefull txt10 p-l-20" type="text"  th:value="*{lastName}" placeholder="Last Name">
                             </div>
 
-                             Email
+<!--                             Email-->
                             <span class="txt9">Email</span>
                             <div class="wrap-inputemail size12 bo2 bo-rad-10 m-t-3 m-b-23">
                                 <input th:field="*{email}" class="bo-rad-10 sizefull txt10 p-l-20" type="text" th:value="*{email}" placeholder="Email">
@@ -47,9 +43,7 @@
                         </div>
                         <div class="col-md-6">
                             <!-- User Name -->
-                            <span class="txt9">
-									UserName
-                            </span>
+                            <span class="txt9">UserName</span>
 
                             <div class=" size12 bo2 bo-rad-10 m-t-3 m-b-23">
                                 <input th:field="*{userName}" class="bo-rad-10 sizefull txt10 p-l-20" type="text"  th:value="*{userName}" placeholder="Account"/>
@@ -64,13 +58,13 @@
                                 <input th:field="*{password}" class="bo-rad-10 sizefull txt10 p-l-20" type="password" >
                             </div>
 
-                            <!-- RePassword -->
+                            <!-- Avatar -->
                             <span class="txt9">
-									Retype Password
+									Choose Avatar
                             </span>
 
-                            <div class="size12 bo2 bo-rad-10 m-t-3 m-b-23">
-                                <input class="bo-rad-10 sizefull txt10 p-l-20" type="password" >
+                            <div class="select2-container bgwhite size12 bo2 bo-rad-10 m-t-3 m-b-23">
+                                <input th:field="*{avatar}"  class="p-t-8 bo-rad-10 sizefull p-l-3 " type="file">
                             </div>
                         </div>
 

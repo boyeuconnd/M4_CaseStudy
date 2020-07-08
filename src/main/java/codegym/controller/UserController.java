@@ -4,20 +4,30 @@ package codegym.controller;
 import codegym.models.Role;
 import codegym.models.Staff;
 import codegym.models.Users;
+import codegym.models.UsersForm;
 import codegym.repositories.UserRepository;
 import codegym.service.RoleService;
 import codegym.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.io.File;
+import java.io.IOException;
 
 @Controller
 @RequestMapping("/user")
 public class UserController {
+
+    @Autowired
+    Environment env;
 
     @Autowired
     UserService userService;
@@ -28,23 +38,44 @@ public class UserController {
     @GetMapping("/create")
     public ModelAndView getRegisterForm(){
         ModelAndView mv = new ModelAndView("user/create");
-        mv.addObject("newUser",new Users());
+        mv.addObject("newUser",new UsersForm());
         return mv;
     }
 
     @PostMapping("create")
-    public ModelAndView userRegister(@ModelAttribute Users user){
+    public ModelAndView userRegister(@ModelAttribute UsersForm usersForm){
+        Users newUser = cloneFromUserformToUser(usersForm);
+
+        //create direct file path to new avatar file
+        MultipartFile multipartFile = usersForm.getAvatar();
+        String filepath = env.getProperty("file_upload").toString();
+        String fileName = newUser.getUserName()+"-"+ multipartFile.getOriginalFilename();
+
+
         ModelAndView mv = new ModelAndView("user/create");
         Role staffRole = roleService.getRoleById(3L);
-        user.setRole(staffRole);
-        if(userService.save(user)!=null){
-            mv.addObject("newUser",new Users());
+        newUser.setAvatar(fileName);
+        newUser.setRole(staffRole);
+        if(userService.save(newUser)!=null){
+            try {
+                FileCopyUtils.copy(usersForm.getAvatar().getBytes(), new File(filepath + fileName));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            mv.addObject("newUser",new UsersForm());
             mv.addObject("mess","Register Success");
         }else {
-            mv.addObject("newUser",user);
+            mv.addObject("newUser",usersForm);
             mv.addObject("mess","Register Not Finish");
         }
         return mv;
+    }
+
+    private Users cloneFromUserformToUser(@ModelAttribute UsersForm usersForm) {
+        return new Users(usersForm.getFirstName(),
+                    usersForm.getLastName(),usersForm.getUserName(),
+                    usersForm.getEmail(),usersForm.getPassword(),
+                    null);
     }
 
 }
