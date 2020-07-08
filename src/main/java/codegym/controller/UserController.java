@@ -10,6 +10,8 @@ import codegym.service.RoleService;
 import codegym.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
+import org.springframework.data.domain.Page;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,6 +36,11 @@ public class UserController {
 
     @Autowired
     RoleService roleService;
+
+    @GetMapping("")
+    public String getUserListPage(){
+        return "menu";
+    }
 
     @GetMapping("/create")
     public ModelAndView getRegisterForm(){
