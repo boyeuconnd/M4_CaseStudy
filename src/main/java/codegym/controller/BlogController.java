@@ -5,10 +5,7 @@ import codegym.models.Blog;
 import codegym.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -26,7 +23,12 @@ public class BlogController {
     }
 
     @GetMapping("/create")
-    public ModelAndView getFormCreate(@ModelAttribute Blog blog){
+    public String getFormCreate(){
+        return "blogs/create";
+    }
+
+    @PostMapping("/create")
+    public ModelAndView createPost(@ModelAttribute Blog blog){
         ModelAndView mv = new ModelAndView("blogs/create");
         mv.addObject("post",blog);
         if(blogService.save(blog)!=null){

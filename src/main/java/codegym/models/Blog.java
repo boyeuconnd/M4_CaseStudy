@@ -21,7 +21,7 @@ public class Blog {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private Users users;
+    private Users users_id;
 
     public Long getId() {
         return id;
@@ -63,11 +63,11 @@ public class Blog {
         this.likes = likes;
     }
 
-    public Users getUsers() {
-        return users;
+    public Users getUsers_id() {
+        return users_id;
     }
 
-    public void setUsers(Users users) {
-        this.users = users;
+    public void setUsers_id(Users users_id) {
+        this.users_id = users_id;
     }
 }

@@ -16,8 +16,8 @@ public class BlogServiceImpl implements BlogService {
     private BlogRepository blogRepository;
 
     @Override
-    public List<Blog> findAll() {
-        return (List<Blog>) blogRepository.findAll();
+    public Page<Blog> findAll(Pageable pageable) {
+        return blogRepository.findAll(pageable);
     }
 
     @Override
@@ -42,12 +42,6 @@ public class BlogServiceImpl implements BlogService {
         Long likes = blog.getLike() + 1;
         blog.setLike( likes  );
         return blogRepository.save(blog);
-    }
-
-    @Override
-    public Iterable<Blog> findAllByAccount(Users user) {
-
-        return blogRepository.findAllByAccount(user);
     }
 
     @Override
