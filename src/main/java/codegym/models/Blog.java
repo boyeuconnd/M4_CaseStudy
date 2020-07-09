@@ -5,7 +5,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "blog")
+@Table(name = "blogs")
 public class Blog {
 
 
@@ -17,11 +17,11 @@ public class Blog {
     @Column(columnDefinition = "TEXT")
     private String content;
     private Timestamp date_create;
-    private Long like;
+    private Long likes;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private Users users;
+    private Users users_id;
 
     public Long getId() {
         return id;
@@ -56,18 +56,18 @@ public class Blog {
     }
 
     public Long getLike() {
-        return like;
+        return likes;
     }
 
-    public void setLike(Long like) {
-        this.like = like;
+    public void setLike(Long likes) {
+        this.likes = likes;
     }
 
-    public Users getUsers() {
-        return users;
+    public Users getUsers_id() {
+        return users_id;
     }
 
-    public void setUsers(Users users) {
-        this.users = users;
+    public void setUsers_id(Users users_id) {
+        this.users_id = users_id;
     }
 }

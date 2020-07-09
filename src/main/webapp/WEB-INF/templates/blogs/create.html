@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="/layout :: head">
+
+</head>
+<body>
+<header th:replace="/layout :: header"></header>
+<aside th:replace="/layout :: aside"></aside>
+
+<section class="section-booking bg1-pattern p-t-100 p-b-110">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 p-b-30">
+                <div class="t-center">
+						<span class="tit2 t-center">
+							Luxury Garden
+						</span>
+
+                    <h3 class="tit3 t-center m-b-35 m-t-2">
+                        Staff Register
+                    </h3>
+                </div>
+
+<!--                <form class="wrap-form-booking" th:object="${blog}" method="post">-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-md-6">-->
+<!--                            &lt;!&ndash; Full Name &ndash;&gt;-->
+<!--                            <span class="txt9">-->
+<!--									Tiêu Đề-->
+<!--								</span>-->
+<!--                            <div class="wrap-inputname size12 bo2 bo-rad-10 m-t-3 m-b-23">-->
+<!--&lt;!&ndash;                                <input th:field="*{title}" class="bo-rad-10 sizefull txt10 p-l-20" placeholder="Name">&ndash;&gt;-->
+<!--                            </div>-->
+
+<!--                            &lt;!&ndash; Nick Name &ndash;&gt;-->
+<!--                            <span class="txt9">-->
+<!--									Nội dung-->
+<!--								</span>-->
+<!--                            <div class=" size12 bo2 bo-rad-10 m-t-3 m-b-23">-->
+<!--&lt;!&ndash;                                <textarea th:field="*{content}" class="bo-rad-10 sizefull txt10 p-l-20" rows="2" type="text"/>&ndash;&gt;-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+<!--                    </div>-->
+
+<!--                    <div class="wrap-btn-booking flex-c-m m-t-6">-->
+<!--                        &lt;!&ndash; Button3 &ndash;&gt;-->
+<!--                        <button type="submit" class="btn3 flex-c-m size13 txt11 trans-0-4">-->
+<!--                            Create-->
+<!--                        </button>-->
+<!--                    </div>-->
+<!--                </form>-->
+<!--            </div>-->
+
+<!--            <div class="col-lg-6 p-b-30 p-t-18">-->
+<!--                <div class="wrap-pic-booking size2 bo-rad-10 hov-img-zoom m-l-r-auto">-->
+<!--                    <img src="../../../resources/images/booking-01.jpg" alt="IMG-OUR">-->
+<!--                </div>-->
+<!--                <div class="m-l-r-auto m-t-12">-->
+<!--                    <th:block th:if="${mess}">-->
+<!--                        <p class="size26 t-center" style="color: green" th:text="${mess}"></p>-->
+<!--                    </th:block>-->
+<!--                </div>-->
+<!--            </div>-->
+        </div>
+    </div>
+</section>
+
+<footer th:replace="/layout :: footer"></footer>
+<div th:replace="/layout :: underfooter"></div>
+</body>
+</html>

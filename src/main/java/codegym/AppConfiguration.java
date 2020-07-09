@@ -1,9 +1,12 @@
 package codegym;
 
 import codegym.filter.CharacterSetFilter;
+import codegym.models.Blog;
+import codegym.service.BlogService;
 import codegym.service.RoleService;
 import codegym.service.StaffService;
 import codegym.service.UserService;
+import codegym.service.impl.BlogServiceImpl;
 import codegym.service.impl.RoleServiceImpl;
 import codegym.service.impl.StaffServiceImpl;
 import codegym.service.impl.UserServiceImpl;
@@ -183,5 +186,10 @@ public class AppConfiguration extends WebMvcConfigurerAdapter implements Applica
         //You may also set other available properties.
 
         return resolver;
+    }
+
+    @Bean
+    public BlogService blogService(){
+        return new BlogServiceImpl();
     }
 }
