@@ -5,13 +5,10 @@ import codegym.models.Role;
 import codegym.models.Staff;
 import codegym.models.Users;
 import codegym.models.UsersForm;
-import codegym.repositories.UserRepository;
 import codegym.service.RoleService;
 import codegym.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
-import org.springframework.data.domain.Page;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -61,6 +58,8 @@ public class UserController {
 
         ModelAndView mv = new ModelAndView("user/create");
         Role staffRole = roleService.getRoleById(3L);
+
+        //set avatar avatar link and set default role user
         newUser.setAvatar(fileName);
         newUser.setRole(staffRole);
         if(userService.save(newUser)!=null){
