@@ -1,14 +1,11 @@
 package codegym;
 
 import codegym.filter.CharacterSetFilter;
-import codegym.models.Blog;
 import codegym.service.BlogService;
 import codegym.service.RoleService;
-import codegym.service.StaffService;
 import codegym.service.UserService;
 import codegym.service.impl.BlogServiceImpl;
 import codegym.service.impl.RoleServiceImpl;
-import codegym.service.impl.StaffServiceImpl;
 import codegym.service.impl.UserServiceImpl;
 import codegym.service.impl.staff.RankServiceImpl;
 import codegym.service.impl.staff.StatusServiceImpl;
@@ -149,10 +146,6 @@ public class AppConfiguration extends WebMvcConfigurerAdapter implements Applica
 
     }
 
-    @Bean
-    public StaffService staffService(){
-        return new StaffServiceImpl();
-    }
 
     @Bean
     public RankService rankService(){

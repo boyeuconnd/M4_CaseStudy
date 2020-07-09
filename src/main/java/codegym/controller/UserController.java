@@ -82,13 +82,5 @@ public class UserController {
                     null);
     }
 
-    @GetMapping("/list")
-    public ModelAndView showStaffList(Pageable pageable){
-        Page<Users> staffList;
-        ModelAndView mv = new ModelAndView("menu");
-        staffList = userService.findAllByRoleEquals(roleService.getRoleById(2L),pageable);
-        mv.addObject("staffList",staffList);
-        return mv;
-    }
 
 }
