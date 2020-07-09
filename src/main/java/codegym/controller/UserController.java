@@ -9,6 +9,8 @@ import codegym.service.RoleService;
 import codegym.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,10 +36,6 @@ public class UserController {
     @Autowired
     RoleService roleService;
 
-    @GetMapping("")
-    public String getUserListPage(){
-        return "menu";
-    }
 
     @GetMapping("/create")
     public ModelAndView getRegisterForm(){
@@ -82,6 +80,15 @@ public class UserController {
                     usersForm.getLastName(),usersForm.getUserName(),
                     usersForm.getEmail(),usersForm.getPassword(),
                     null);
+    }
+
+    @GetMapping("/list")
+    public ModelAndView showStaffList(Pageable pageable){
+        Page<Users> staffList;
+        ModelAndView mv = new ModelAndView("menu");
+        staffList = userService.findAllByRoleEquals(roleService.getRoleById(2L),pageable);
+        mv.addObject("staffList",staffList);
+        return mv;
     }
 
 }
