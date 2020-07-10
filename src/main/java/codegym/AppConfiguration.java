@@ -11,7 +11,9 @@ import codegym.service.impl.staff.RankServiceImpl;
 import codegym.service.impl.staff.StatusServiceImpl;
 import codegym.service.staff.RankService;
 import codegym.service.staff.StatusService;
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.core.env.Environment;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -185,4 +187,5 @@ public class AppConfiguration extends WebMvcConfigurerAdapter implements Applica
     public BlogService blogService(){
         return new BlogServiceImpl();
     }
+    
 }

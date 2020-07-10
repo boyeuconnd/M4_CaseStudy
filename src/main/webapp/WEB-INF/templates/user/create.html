@@ -9,8 +9,8 @@
 
 <section class="section-booking bg1-pattern p-t-100 p-b-110">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-6 p-b-30">
+        <div class="row" th:object="${newUser}">
+            <div class="col-lg-6 p-b-30" >
                 <div class="t-center">
 						<span class="tit2 t-center">
 							Luxury Garden
@@ -21,7 +21,7 @@
                     </h3>
                 </div>
 
-                <form class="wrap-form-booking" th:object="${newUser}" method="post" enctype="multipart/form-data">
+                <form class="wrap-form-booking"  method="post" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-md-6">
                             <!-- First Name -->
@@ -85,10 +85,15 @@
                     <img src="../../../resources/images/booking-01.jpg" alt="IMG-OUR">
 
                 </div>
-                <div class="m-l-r-auto m-t-12">
+                <div class="m-l-r-auto m-t-30">
                     <th:block th:if="${mess}">
                         <p class="size26 t-center" style="color: green" th:text="${mess}"></p>
                     </th:block>
+                    <div style="color: red">
+                        <div class="t-center" th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">Name Error</div>
+                        <div class="t-center" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Name Error</div>
+                        <div class="t-center" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Name Error</div>
+                    </div>
                 </div>
             </div>
         </div>
