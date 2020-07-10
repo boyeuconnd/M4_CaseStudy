@@ -9,10 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -71,6 +68,14 @@ public class StaffController {
         ModelAndView mv = new ModelAndView("menu");
         staffList = userService.findAllByRoleEquals(roleService.getRoleById(2L),pageable);
         mv.addObject("staffList",staffList);
+        return mv;
+    }
+
+    @GetMapping("/{id}")
+    public ModelAndView showStaffDetail(@PathVariable Long id){
+        ModelAndView mv = new ModelAndView("staff/detail");
+        Users staff = userService.findOne(id);
+        mv.addObject("staff",staff);
         return mv;
     }
 }

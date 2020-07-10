@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="/layout :: head">
+
+</head>
+<body>
+    <header th:replace="/layout :: header"></header>
+    <aside th:replace="/layout :: aside"></aside>
+    <!-- Detail Zone-->
+    <section class="bg1-pattern p-t-120 p-b-105">
+        <div class="container">
+            <!-- Delicious -->
+            <div class="row" th:object="${staff}">
+                <div class="col-md-6 p-t-45 p-b-30">
+                    <div class="wrap-text-delicious t-center">
+						<span class="tit2 t-center">
+							Staff Detail
+						</span>
+
+                        <h3 class="tit3 t-center m-b-35 m-t-5" th:text="*{rank}">
+                        </h3>
+                        <h5></h5>
+
+                        <p class="t-center m-b-22 size3 m-l-r-auto">
+                            Đến với vườn địa đàng để tận hưởng vị tươi ngon của hoa quả bốn mùa.
+                            Nơi giao thoa giữa tiên cảnh và trần gian, giải tỏa stress, gội rửa bụi trần,
+                            chuẩn bị cho mình một tâm hồn đẹp!
+
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 p-b-30">
+                    <div class="wrap-pic-delicious size2 bo-rad-10 hov-img-zoom m-l-r-auto">
+                        <img th:src="'/img/'+${staff.avatar}" alt="IMG-OUR">
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Romantic -->
+<!--            <div class="row p-t-170">-->
+<!--                <div class="col-md-6 p-b-30">-->
+<!--                    <div class="wrap-pic-romantic size2 bo-rad-10 hov-img-zoom m-l-r-auto">-->
+<!--                        <img src="../../resources/images/our-story-02.jpg" alt="IMG-OUR">-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="col-md-6 p-t-45 p-b-30">-->
+<!--                    <div class="wrap-text-romantic t-center">-->
+<!--						<span class="tit2 t-center">-->
+<!--							Romantic-->
+<!--						</span>-->
+
+<!--                        <h3 class="tit3 t-center m-b-35 m-t-5">-->
+<!--                            Place-->
+<!--                        </h3>-->
+
+<!--                        <p class="t-center m-b-22 size3 m-l-r-auto">-->
+<!--                            Với phong cách hiện đại mà cổ kính, chúng tôi sẽ mang đến cho bạn không gian lãng mạn,-->
+<!--                            để bạn tận hưởng những khoảnh khắc bên tri kỉ của mình. Vì sống là để trải nghiệm...-->
+<!--                        </p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+        </div>
+    </section>
+
+
+    <footer th:replace="/layout :: footer"></footer>
+    <div th:replace="/layout :: underfooter"></div>
+</body>
+</html>
