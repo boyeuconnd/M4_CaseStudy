@@ -71,11 +71,11 @@ public class StaffController {
         return mv;
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("{id}")
     public ModelAndView showStaffDetail(@PathVariable Long id){
         ModelAndView mv = new ModelAndView("staff/detail");
-        Users staff = userService.findOne(id);
-        mv.addObject("staff",staff);
+        Users user = userService.findOne(id);
+        mv.addObject("userStaff",user);
         return mv;
     }
 }

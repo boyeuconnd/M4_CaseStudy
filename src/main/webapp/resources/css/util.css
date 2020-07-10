@@ -3559,6 +3559,11 @@ SHAPE SHAPE SHAPE SHAPE SHAPE SHAPE SHAPE SHAPE SHAPE SHAPE
 	max-width: 190px;
 }
 
+.size39 {
+    width: 80px;
+    height: 80px;
+}
+
 /*[ Background Color ]
 -----------------------------------------------------------
 */
@@ -3825,4 +3830,14 @@ RESPONSIVE  RESPONSIVE  RESPONSIVE  RESPONSIVE   RESPONSIVE
 		-ms-align-items: center;
 		align-items: center;
 	}
+}
+
+.obj-f-fill{
+    object-fit: fill;
+}
+.obj-f-noon{
+    object-fit: none;
+}
+.obj-f-cover{
+    object-fit: cover;
 }

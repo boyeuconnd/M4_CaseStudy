@@ -27,7 +27,7 @@ import java.io.File;
 import java.io.IOException;
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("user")
 public class UserController {
 
     @Autowired
@@ -40,7 +40,7 @@ public class UserController {
     RoleService roleService;
 
 
-    @GetMapping("/create")
+    @GetMapping("create")
     public ModelAndView getRegisterForm(){
         ModelAndView mv = new ModelAndView("user/create");
         mv.addObject("newUser",new UsersForm());
