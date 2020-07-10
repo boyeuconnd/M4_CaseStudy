@@ -55,7 +55,7 @@
 								</li>
 
 								<li>
-									<a href="user">Menu</a>
+									<a href="/staff">Menu</a>
 								</li>
 
 								<li>
@@ -63,15 +63,15 @@
 								</li>
 
 								<li>
-									<a href="gallery.html">Gallery</a>
+									<a href="/gallery">Gallery</a>
 								</li>
 
 								<li>
-									<a href="about">About</a>
+									<a href="/about">About</a>
 								</li>
 
 								<li>
-									<a href="blog">Blog</a>
+									<a href="/blog">Blog</a>
 								</li>
 
 								<li>
@@ -83,7 +83,7 @@
 
 					<!-- Social -->
 					<div class="social flex-w flex-l-m p-r-20">
-						<a href="#"><i class="fa fa-tripadvisor" aria-hidden="true"></i></a>
+						<a th:href="@{/search}"><i class="fa fa-search" aria-hidden="true"></i></a>
 						<a href="#"><i class="fa fa-facebook m-l-21" aria-hidden="true"></i></a>
 						<a href="#"><i class="fa fa-twitter m-l-21" aria-hidden="true"></i></a>
 
@@ -1106,7 +1106,7 @@
 
 	<!-- Sign up -->
 	<div class="section-signup bg1-pattern p-t-85 p-b-85">
-		<form class="flex-c-m flex-w flex-col-c-m-lg p-l-5 p-r-5">
+		<form action="/user/create" method="get" class="flex-c-m flex-w flex-col-c-m-lg p-l-5 p-r-5">
 			<span class="txt5 m-10">
 				Specials Sign up
 			</span>

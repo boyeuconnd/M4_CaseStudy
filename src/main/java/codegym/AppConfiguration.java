@@ -116,7 +116,7 @@ public class AppConfiguration extends WebMvcConfigurerAdapter implements Applica
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource.setUrl("jdbc:mysql://localhost:3306/m4_case");
         dataSource.setUsername("root");
-        dataSource.setPassword("kieuanhxinh");
+        dataSource.setPassword("1234");
         return dataSource;
     }
 

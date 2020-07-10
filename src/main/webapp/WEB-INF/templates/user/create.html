@@ -35,7 +35,7 @@
                                 <input th:field="*{lastName}" class="bo-rad-10 sizefull txt10 p-l-20" type="text"  th:value="*{lastName}" placeholder="Last Name">
                             </div>
 
-<!--                             Email-->
+                            <!--Email-->
                             <span class="txt9">Email</span>
                             <div class="wrap-inputemail size12 bo2 bo-rad-10 m-t-3 m-b-23">
                                 <input th:field="*{email}" class="bo-rad-10 sizefull txt10 p-l-20" type="text" th:value="*{email}" placeholder="Email">
@@ -87,7 +87,7 @@
                 </div>
                 <div class="m-l-r-auto m-t-30">
                     <th:block th:if="${mess}">
-                        <p class="size26 t-center" style="color: green" th:text="${mess}"></p>
+                        <div class="fs-25 t-center" style="color: green" th:text="${mess}"></div>
                     </th:block>
                     <div style="color: red">
                         <div class="t-center" th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">Name Error</div>

@@ -65,7 +65,7 @@ public class StaffController {
         return mv;
     }
 
-    @GetMapping("/list")
+    @GetMapping("")
     public ModelAndView showStaffList(Pageable pageable){
         Page<Users> staffList;
         ModelAndView mv = new ModelAndView("menu");
