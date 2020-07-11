@@ -1,12 +1,13 @@
 package codegym;
 
 import codegym.filter.CharacterSetFilter;
-import codegym.models.Blog;
-import codegym.service.BlogService;
+import codegym.service.blogs.CategoryService;
+import codegym.service.blogs.PostService;
 import codegym.service.RoleService;
 import codegym.service.StaffService;
 import codegym.service.UserService;
-import codegym.service.impl.BlogServiceImpl;
+import codegym.service.impl.blogs.CategoryServiceImpl;
+import codegym.service.impl.blogs.PostServiceImpl;
 import codegym.service.impl.RoleServiceImpl;
 import codegym.service.impl.StaffServiceImpl;
 import codegym.service.impl.UserServiceImpl;
@@ -117,7 +118,7 @@ public class AppConfiguration extends WebMvcConfigurerAdapter implements Applica
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource.setUrl("jdbc:mysql://localhost:3306/m4_case");
         dataSource.setUsername("root");
-        dataSource.setPassword("1234");
+        dataSource.setPassword("123456");
         return dataSource;
     }
 
@@ -189,7 +190,12 @@ public class AppConfiguration extends WebMvcConfigurerAdapter implements Applica
     }
 
     @Bean
-    public BlogService blogService(){
-        return new BlogServiceImpl();
+    public PostService PostService(){
+        return new PostServiceImpl();
+    }
+
+    @Bean
+    public CategoryService categoryService(){
+        return new CategoryServiceImpl();
     }
 }

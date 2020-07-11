@@ -17,6 +17,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public Iterable<Users> findAll() {
+        return userRepository.findAll();
+    }
+
+    @Override
     public Users findOne(Long id) {
         return userRepository.findOne(id);
     }

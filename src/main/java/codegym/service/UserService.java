@@ -8,7 +8,7 @@ import org.springframework.data.domain.Pageable;
 
 public interface UserService {
     Page<Users> findAll(Pageable pageable);
-
+    Iterable<Users> findAll();
     Users findOne(Long id);
 
     Users save (Users user);
