@@ -16,8 +16,7 @@ public class Gallery {
     public Gallery() {
     }
 
-    public Gallery(Long id, String avatar, String category) {
-        this.id = id;
+    public Gallery( String avatar, String category) {
         this.avatar = avatar;
         this.category = category;
     }
