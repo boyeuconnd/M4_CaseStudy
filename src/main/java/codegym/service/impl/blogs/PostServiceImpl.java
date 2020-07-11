@@ -22,7 +22,7 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public Page<Post> findAllByTitle(String title, Pageable pageable) {
-        return postRepository.findAllByTitle(title,pageable);
+        return postRepository.findAllByTitleContaining(title,pageable);
     }
 
     @Override

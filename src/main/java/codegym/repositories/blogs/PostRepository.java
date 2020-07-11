@@ -7,6 +7,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 public interface PostRepository extends PagingAndSortingRepository<Post,Long> {
-    Page<Post> findAllByTitle(String title, Pageable pageable);
+    Page<Post> findAllByTitleContaining(String title, Pageable pageable);
 }
 

@@ -32,10 +32,6 @@ public class PostController {
     @Autowired
     private UserService userService;
 
-    @ModelAttribute("users")
-    public Iterable<Users> users(){
-        return userService.findAll();
-    }
 
     @ModelAttribute("categories")
     public Iterable<Category> categories(){
@@ -43,14 +39,18 @@ public class PostController {
     }
 
     @GetMapping("")
-    public ModelAndView getIndex( @RequestParam("s") Optional<String> s,@PageableDefault(size = 2) Pageable pageable){
+    public ModelAndView getIndex( @RequestParam("s") Optional<String> keyword,@PageableDefault(size = 2) Pageable pageable){
         Page<Post> blogs ;
-        if(s.isPresent()){
-            blogs = postService.findAllByTitle(s.get(),pageable);
+        ModelAndView modelAndView = new ModelAndView("/blogs/blog");
+        if(keyword.isPresent()){
+            blogs = postService.findAllByTitle(keyword.get(),pageable);
+            modelAndView.addObject("keyword",keyword.get());
+            if(!blogs.hasContent()){
+                modelAndView.addObject("mess","No result");
+            }
         }else {
             blogs = postService.findAll(pageable);
         }
-        ModelAndView modelAndView = new ModelAndView("/blogs/blog");
         modelAndView.addObject("blogs",blogs);
         return modelAndView;
     }
