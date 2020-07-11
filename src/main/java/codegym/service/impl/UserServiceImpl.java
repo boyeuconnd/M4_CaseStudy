@@ -1,5 +1,6 @@
 package codegym.service.impl;
 
+import codegym.models.Role;
 import codegym.models.Users;
 import codegym.repositories.UserRepository;
 import codegym.service.UserService;
@@ -36,5 +37,10 @@ public class UserServiceImpl implements UserService {
         Users users = userRepository.findOne(id);
         userRepository.delete(id);
         return users;
+    }
+
+    @Override
+    public Page<Users> findAllByRoleEquals(Role role, Pageable pageable) {
+        return userRepository.findAllByRoleEquals(role,pageable);
     }
 }

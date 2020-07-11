@@ -5,13 +5,17 @@ import codegym.models.Role;
 import codegym.models.Staff;
 import codegym.models.Users;
 import codegym.models.UsersForm;
-import codegym.repositories.UserRepository;
 import codegym.service.RoleService;
 import codegym.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,7 +27,7 @@ import java.io.File;
 import java.io.IOException;
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("user")
 public class UserController {
 
     @Autowired
@@ -35,7 +39,8 @@ public class UserController {
     @Autowired
     RoleService roleService;
 
-    @GetMapping("/create")
+
+    @GetMapping("create")
     public ModelAndView getRegisterForm(){
         ModelAndView mv = new ModelAndView("user/create");
         mv.addObject("newUser",new UsersForm());
@@ -43,30 +48,38 @@ public class UserController {
     }
 
     @PostMapping("create")
-    public ModelAndView userRegister(@ModelAttribute UsersForm usersForm){
-        Users newUser = cloneFromUserformToUser(usersForm);
+    public ModelAndView userRegister(@Validated @ModelAttribute("newUser") UsersForm usersForm, BindingResult bindingResult){
 
-        //create direct file path to new avatar file
-        MultipartFile multipartFile = usersForm.getAvatar();
-        String filepath = env.getProperty("file_upload").toString();
-        String fileName = newUser.getUserName()+"-"+ multipartFile.getOriginalFilename();
-
-
-        ModelAndView mv = new ModelAndView("user/create");
-        Role staffRole = roleService.getRoleById(3L);
-        newUser.setAvatar(fileName);
-        newUser.setRole(staffRole);
-        if(userService.save(newUser)!=null){
-            try {
-                FileCopyUtils.copy(usersForm.getAvatar().getBytes(), new File(filepath + fileName));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            mv.addObject("newUser",new UsersForm());
-            mv.addObject("mess","Register Success");
+        ModelAndView mv = null;
+        if (bindingResult.hasFieldErrors()){
+            return new ModelAndView("user/create");
         }else {
-            mv.addObject("newUser",usersForm);
-            mv.addObject("mess","Register Not Finish");
+            Users newUser = cloneFromUserformToUser(usersForm);
+
+            //create direct file path to new avatar file
+            MultipartFile multipartFile = usersForm.getAvatar();
+            String filepath = env.getProperty("file_upload").toString();
+            String fileName = newUser.getUserName() + "-" + multipartFile.getOriginalFilename();
+
+
+            mv = new ModelAndView("user/create");
+            Role staffRole = roleService.getRoleById(3L);
+
+            //set avatar avatar link and set default role user
+            newUser.setAvatar(fileName);
+            newUser.setRole(staffRole);
+            if (userService.save(newUser) != null) {
+                try {
+                    FileCopyUtils.copy(usersForm.getAvatar().getBytes(), new File(filepath + fileName));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                mv.addObject("newUser", new UsersForm());
+                mv.addObject("mess", "Register Success");
+            } else {
+                mv.addObject("newUser", usersForm);
+                mv.addObject("mess", "Register Not Finish");
+            }
         }
         return mv;
     }

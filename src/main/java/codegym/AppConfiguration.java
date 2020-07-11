@@ -4,18 +4,18 @@ import codegym.filter.CharacterSetFilter;
 import codegym.service.blogs.CategoryService;
 import codegym.service.blogs.PostService;
 import codegym.service.RoleService;
-import codegym.service.StaffService;
 import codegym.service.UserService;
 import codegym.service.impl.blogs.CategoryServiceImpl;
 import codegym.service.impl.blogs.PostServiceImpl;
 import codegym.service.impl.RoleServiceImpl;
-import codegym.service.impl.StaffServiceImpl;
 import codegym.service.impl.UserServiceImpl;
 import codegym.service.impl.staff.RankServiceImpl;
 import codegym.service.impl.staff.StatusServiceImpl;
 import codegym.service.staff.RankService;
 import codegym.service.staff.StatusService;
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.core.env.Environment;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -118,7 +118,7 @@ public class AppConfiguration extends WebMvcConfigurerAdapter implements Applica
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource.setUrl("jdbc:mysql://localhost:3306/m4_case");
         dataSource.setUsername("root");
-        dataSource.setPassword("123456");
+        dataSource.setPassword("1234");
         return dataSource;
     }
 
@@ -150,10 +150,6 @@ public class AppConfiguration extends WebMvcConfigurerAdapter implements Applica
 
     }
 
-    @Bean
-    public StaffService staffService(){
-        return new StaffServiceImpl();
-    }
 
     @Bean
     public RankService rankService(){

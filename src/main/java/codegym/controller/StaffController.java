@@ -1,19 +1,15 @@
 package codegym.controller;
 
-import codegym.models.Rank;
-import codegym.models.Role;
-import codegym.models.Staff;
-import codegym.models.Status;
+import codegym.models.*;
 import codegym.service.RoleService;
-import codegym.service.StaffService;
+import codegym.service.UserService;
 import codegym.service.staff.RankService;
 import codegym.service.staff.StatusService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -24,11 +20,13 @@ public class StaffController {
     RankService rankService;
 
     @Autowired
-    StaffService staffService;
-    @Autowired
     StatusService statusService;
+
     @Autowired
     RoleService roleService;
+
+    @Autowired
+    UserService userService;
 
 
     @ModelAttribute("allRanks")
@@ -41,19 +39,19 @@ public class StaffController {
         return statusService.showStatus();
     }
 
-    @GetMapping("/create")
-    public ModelAndView showCreateForm(){
+    @GetMapping("/register")
+    public ModelAndView showPromoteForm(){
         ModelAndView mv = new ModelAndView("staff/create");
         mv.addObject("staff",new Staff());
         return mv;
     }
 
-    @PostMapping("/create")
-    public ModelAndView createStaff(@ModelAttribute Staff staff){
+    @PostMapping("/register")
+    public ModelAndView becomeStaff(@ModelAttribute Users staff){
         ModelAndView mv = new ModelAndView("staff/create");
         Role staffRole = roleService.getRoleById(2L);
         staff.setRole(staffRole);
-        if(staffService.save(staff)!=null){
+        if(userService.save(staff)!=null){
             mv.addObject("staff",new Staff());
             mv.addObject("mess","Register Success");
         }else {
@@ -61,6 +59,23 @@ public class StaffController {
             mv.addObject("mess","Register Not Finish");
 
         }
+        return mv;
+    }
+
+    @GetMapping("")
+    public ModelAndView showStaffList(Pageable pageable){
+        Page<Users> staffList;
+        ModelAndView mv = new ModelAndView("menu");
+        staffList = userService.findAllByRoleEquals(roleService.getRoleById(2L),pageable);
+        mv.addObject("staffList",staffList);
+        return mv;
+    }
+
+    @GetMapping("{id}")
+    public ModelAndView showStaffDetail(@PathVariable Long id){
+        ModelAndView mv = new ModelAndView("staff/detail");
+        Users user = userService.findOne(id);
+        mv.addObject("userStaff",user);
         return mv;
     }
 }

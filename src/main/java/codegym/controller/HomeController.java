@@ -17,4 +17,12 @@ public class HomeController {
         return "about";
     }
 
+    @GetMapping("/contact")
+    public String getContactPage(){return "contact";}
+
+
+    @GetMapping("/reservation")
+    public String getReservationPage(){
+        return "/reservation";
+    }
 }

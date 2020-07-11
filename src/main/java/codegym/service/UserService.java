@@ -1,6 +1,7 @@
 package codegym.service;
 
 
+import codegym.models.Role;
 import codegym.models.Users;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,4 +15,6 @@ public interface UserService {
     Users save (Users user);
 
     Users delete(Long id);
+
+    Page<Users> findAllByRoleEquals(Role role, Pageable pageable);
 }
