@@ -78,4 +78,9 @@ public class StaffController {
         mv.addObject("userStaff",user);
         return mv;
     }
+
+    @GetMapping("{id}/edit")
+    public String showEditForm(@PathVariable Long id){
+        return "staff/update";
+    }
 }
