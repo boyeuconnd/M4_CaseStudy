@@ -43,7 +43,7 @@ public class PostController {
     }
 
     @GetMapping("")
-    public ModelAndView getIndex( @RequestParam("s") Optional<String> s,@PageableDefault(size = 2) Pageable pageable){
+    public ModelAndView getIndex( @RequestParam("s") Optional<String> s,@PageableDefault(size = 1) Pageable pageable){
         Page<Post> blogs ;
         if(s.isPresent()){
             blogs = postService.findAllByTitle(s.get(),pageable);
@@ -56,10 +56,9 @@ public class PostController {
     }
 
     @GetMapping("/{id}")
-    public ModelAndView findById(@PathVariable("id") Long id, Pageable pageable){
-        Post post = postService.findById(id);
+    public ModelAndView findById(@PathVariable("id") Long id){
         ModelAndView modelAndView = new ModelAndView("/blogs/blog-detail");
-        modelAndView.addObject("post", post);
+        modelAndView.addObject("blog", postService.findById(id));
         return modelAndView;
     }
 
