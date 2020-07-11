@@ -32,6 +32,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests().antMatchers("/gallery/**","/admin/**")
                 .hasRole("ADMIN")
-                .and().formLogin().and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
+                .and().formLogin()
+                .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
     }
 }
