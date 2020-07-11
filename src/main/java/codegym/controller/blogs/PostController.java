@@ -32,6 +32,10 @@ public class PostController {
     @Autowired
     private UserService userService;
 
+    @ModelAttribute("users")
+    public Iterable<Users> users(){
+        return userService.findAll();
+    }
 
     @ModelAttribute("categories")
     public Iterable<Category> categories(){
@@ -56,10 +60,9 @@ public class PostController {
     }
 
     @GetMapping("/{id}")
-    public ModelAndView findById(@PathVariable("id") Long id, Pageable pageable){
-        Post post = postService.findById(id);
+    public ModelAndView findById(@PathVariable("id") Long id){
         ModelAndView modelAndView = new ModelAndView("/blogs/blog-detail");
-        modelAndView.addObject("post", post);
+        modelAndView.addObject("blog", postService.findById(id));
         return modelAndView;
     }
 
