@@ -21,9 +21,8 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public Page<Post> findAllSummary(Pageable pageable) {
-
-        return postRepository.findAll(pageable);
+    public Page<Post> findAllByTitle(String title, Pageable pageable) {
+        return postRepository.findAllByTitle(title,pageable);
     }
 
     @Override
@@ -46,8 +45,8 @@ public class PostServiceImpl implements PostService {
     @Override
     public Post addLike(Long blogId) {
         Post post = postRepository.findOne(blogId);
-        Long likes = post.getLike() + 1;
-        post.setLike( likes  );
+        Long likes = post.getLikes() + 1;
+        post.setLikes( likes  );
         return postRepository.save(post);
     }
 }

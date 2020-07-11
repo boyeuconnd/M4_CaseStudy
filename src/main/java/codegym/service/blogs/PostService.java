@@ -7,7 +7,7 @@ import org.springframework.data.domain.Pageable;
 public interface PostService {
     Page<Post> findAll(Pageable pageable);
 
-    Page<Post> findAllSummary(Pageable pageable);
+    Page<Post> findAllByTitle(String title ,Pageable pageable);
 
     Post findById(Long id);
 

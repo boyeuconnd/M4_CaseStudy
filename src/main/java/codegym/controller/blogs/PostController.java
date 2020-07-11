@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.sql.Timestamp;
+import java.util.Optional;
 
 
 @Controller
@@ -42,10 +43,15 @@ public class PostController {
     }
 
     @GetMapping("")
-    public ModelAndView findAll(@PageableDefault(size = 3) Pageable pageable){
-        Page<Post> posts = postService.findAllSummary(pageable);
+    public ModelAndView getIndex( @RequestParam("s") Optional<String> s,@PageableDefault(size = 2) Pageable pageable){
+        Page<Post> blogs ;
+        if(s.isPresent()){
+            blogs = postService.findAllByTitle(s.get(),pageable);
+        }else {
+            blogs = postService.findAll(pageable);
+        }
         ModelAndView modelAndView = new ModelAndView("/blogs/blog");
-        modelAndView.addObject("posts", posts);
+        modelAndView.addObject("blogs",blogs);
         return modelAndView;
     }
 
