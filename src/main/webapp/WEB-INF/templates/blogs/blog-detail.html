@@ -26,13 +26,13 @@
 	<section>
 		<div class="bread-crumb bo5-b p-t-17 p-b-17">
 			<div class="container">
-				<a href="../index.html" class="txt27">
+				<a href="/" class="txt27">
 					Home
 				</a>
 
 				<span class="txt29 m-l-10 m-r-10">/</span>
 
-				<a href="post.html" class="txt27">
+				<a href="/blog" class="txt27">
 					Blog
 				</a>
 
@@ -55,29 +55,29 @@
 									<img src="../../../resources/images/bg-title-page-05.jpg" alt="IMG-BLOG">
 								</a>
 								<div class="date-blo4 flex-col-c-m">
-									<span class="txt30 m-b-4" th:text="${blog.getDate_create().getDate()}">
+									<span class="txt30 m-b-4" th:text="${blog.date_create.getDate()}">
 									</span>
 
-									<span class="txt31" th:text="${blog.getDate_create().getMonth()} + ', 2020'">
+									<span class="txt31" th:text="${blog.date_create.getMonth()} + ', 2020'">
 									</span>
 								</div>
 							</div>
 
 							<div class="text-blo4 p-t-33">
 								<h4 class="p-b-16">
-									<a href="blog-detail.html" class="tit9" th:text="${blog.getTitle()}"></a>
+									<a href="blog-detail.html" class="tit9" th:text="${blog.title}"></a>
 								</h4>
 
 								<div class="txt32 flex-w p-b-24">
-									<span th:text="' ' + ${blog.users_id.getNickName()}+' '">
+									<span th:text="' ' + ${blog.users_id.userName}+' '">
 									</span >
 									<span class="m-r-6 m-l-4">|</span>
 
-									<span th:text="' '+ ${blog.getDate_create()}+' '">
+									<span th:text="' '+ ${blog.date_create}+' '">
 									</span>
 									<span class="m-r-6 m-l-4">|</span>
 
-									<span th:text=" ' ' + ${blog.category_id.getName()} + ' ' ">
+									<span th:text=" ' ' + ${blog.category_id.name} + ' ' ">
 									</span>
 									<span class="m-r-6 m-l-4">|</span>
 
@@ -86,7 +86,7 @@
 									</span>
 								</div>
 
-								<div th:utext="${blog.getContent()}">
+								<div th:utext="${blog.content}">
 								</div>
 
 							</div>
@@ -128,8 +128,10 @@
 					<div class="sidebar2 p-t-80 p-b-80 p-l-20 p-l-0-md p-t-0-md">
 						<!-- Search -->
 						<div class="search-sidebar2 size12 bo2 pos-relative">
-							<input class="input-search-sidebar2 txt10 p-l-20 p-r-55" type="text" name="search" placeholder="Search">
-							<button class="btn-search-sidebar2 flex-c-m ti-search trans-0-4"></button>
+							<form th:action="@{/blog}" method="get">
+								<input class="input-search-sidebar2 txt10 p-l-20 p-r-55" type="text" name="s" placeholder="Search by title">
+								<button class="btn-search-sidebar2 flex-c-m ti-search trans-0-4"></button>
+							</form>
 						</div>
 
 						<!-- Categories -->

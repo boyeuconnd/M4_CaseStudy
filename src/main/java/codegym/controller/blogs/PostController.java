@@ -75,6 +75,14 @@ public class PostController {
 
     @PostMapping("/create")
     public ModelAndView savePost(@ModelAttribute("post") Post post){
+
+
+        //temp set fix User for blog author, waiting for dev login feature using usename and password
+        Users tempUser = userService.findOne(10L);
+        post.setUsers_id(tempUser);
+
+
+
         postService.save(post);
         ModelAndView modelAndView = new ModelAndView("/blogs/create");
         modelAndView.addObject("post", new Post());

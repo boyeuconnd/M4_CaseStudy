@@ -46,7 +46,7 @@
 						<!-- Block4 -->
 						<div class="blo4 p-b-63" th:each=" blog : ${blogs}">
 							<div class="pic-blo4 hov-img-zoom bo-rad-10 pos-relative">
-								<a href="blog-detail.html">
+								<a th:href="@{/blog/__${blog.id}__}">
 									<img src="/resources/images/bg-title-page-05.jpg" alt="IMG-BLOG">
 								</a>
 								<div class="date-blo4 flex-col-c-m">
@@ -60,7 +60,7 @@
 
 							<div class="text-blo4 p-t-33">
 								<h4 class="p-b-16">
-									<a href="blog-detail.html" class="tit9" th:text="${blog.title}"></a>
+									<a th:href="@{/blog/__${blog.id}__}" class="tit9" th:text="${blog.title}"></a>
 								</h4>
 
 								<div class="txt32 flex-w p-b-24">
@@ -95,7 +95,7 @@
 						<!-- Pagination -->
 						<div class="pagination flex-l-m flex-w m-l--6 p-t-25">
 							    <a th:href="@{'/blog'(s=${keyword},page=${blogs.number - 1})}" th:if="${blogs.hasPrevious()}" class="item-pagination flex-c-m trans-0-4">◁</a>
-							    <span th:text="${blogs.number + 1}"></span>/<span th:text="${blogs.totalPages}" class="item-pagination flex-c-m trans-0-4 active-pagination"></span>
+							    <span th:text="${blogs.number + 1}"class="item-pagination flex-c-m trans-0-4 active-pagination"></span>/<span th:text="${blogs.totalPages}" class="item-pagination flex-c-m trans-0-4"></span>
 							    <a th:href="@{'/blog'(s=${keyword},page=${blogs.number + 1})}" th:if="${blogs.hasNext()}" class="item-pagination flex-c-m trans-0-4">▷</a>
 						</div>
 					</div>
@@ -105,8 +105,10 @@
 					<div class="sidebar2 p-t-80 p-b-80 p-l-20 p-l-0-md p-t-0-md">
 						<!-- Search -->
 						<div class="search-sidebar2 size12 bo2 pos-relative">
-							<input class="input-search-sidebar2 txt10 p-l-20 p-r-55" type="text" name="search" placeholder="Search">
-							<button class="btn-search-sidebar2 flex-c-m ti-search trans-0-4"></button>
+							<form th:action="@{/blog}" method="get">
+								<input class="input-search-sidebar2 txt10  p-r-55" type="text" name="s" placeholder="Search by title">
+								<button class="btn-search-sidebar2 flex-c-m ti-search trans-0-4"></button>
+							</form>
 						</div>
 
 						<!-- Categories -->

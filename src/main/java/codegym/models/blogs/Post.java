@@ -18,6 +18,8 @@ public class Post {
     @Column(columnDefinition = "TEXT")
     private String content;
     private Timestamp date_create = new Timestamp(System.currentTimeMillis());
+
+    @Column(columnDefinition = " default 0")
     private Long likes;
 
     @ManyToOne
