@@ -22,7 +22,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/","/blog","/staff","/gallery","/user/create")
+        http.authorizeRequests().antMatchers("/","/blog","/staff","/gallery","/user/**")
                 .permitAll()
                 .and().authorizeRequests().antMatchers("/blog/**")
                 .hasAnyRole("USER","STAFF","ADMIN")
@@ -33,6 +33,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests().antMatchers("/gallery/**","/admin/**")
                 .hasRole("ADMIN")
                 .and().formLogin()
-                .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
+                .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .and().csrf().disable();
     }
 }
