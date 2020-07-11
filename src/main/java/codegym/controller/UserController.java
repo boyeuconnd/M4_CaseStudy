@@ -2,16 +2,12 @@ package codegym.controller;
 
 
 import codegym.models.Role;
-import codegym.models.Staff;
 import codegym.models.Users;
 import codegym.models.UsersForm;
 import codegym.service.RoleService;
 import codegym.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.validation.BindingResult;

@@ -42,7 +42,7 @@ public class StaffController {
     @GetMapping("/register")
     public ModelAndView showPromoteForm(){
         ModelAndView mv = new ModelAndView("staff/create");
-        mv.addObject("staff",new Staff());
+        mv.addObject("staff",new UsersForm());
         return mv;
     }
 
@@ -52,7 +52,7 @@ public class StaffController {
         Role staffRole = roleService.getRoleById(2L);
         staff.setRole(staffRole);
         if(userService.save(staff)!=null){
-            mv.addObject("staff",new Staff());
+            mv.addObject("staff",new UsersForm());
             mv.addObject("mess","Register Success");
         }else {
             mv.addObject("staff",staff);
