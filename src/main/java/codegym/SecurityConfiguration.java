@@ -33,6 +33,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests().antMatchers("/gallery/**","/admin/**")
                 .hasRole("ADMIN")
                 .and().formLogin()
+                .loginPage("/login")
+//                .loginProcessingUrl("/user-login")
                 .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .and().csrf().disable();
     }

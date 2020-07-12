@@ -95,7 +95,7 @@
 						<!-- Pagination -->
 						<div class="pagination flex-l-m flex-w m-l--6 p-t-25">
 							    <a th:href="@{'/blog'(s=${keyword},page=${blogs.number - 1})}" th:if="${blogs.hasPrevious()}" class="item-pagination flex-c-m trans-0-4">◁</a>
-							    <span th:text="${blogs.number + 1}"class="item-pagination flex-c-m trans-0-4 active-pagination"></span>/<span th:text="${blogs.totalPages}" class="item-pagination flex-c-m trans-0-4"></span>
+							    <span th:text="${blogs.number + 1}" class="item-pagination flex-c-m trans-0-4 active-pagination"></span>/<span th:text="${blogs.totalPages}" class="item-pagination flex-c-m trans-0-4"></span>
 							    <a th:href="@{'/blog'(s=${keyword},page=${blogs.number + 1})}" th:if="${blogs.hasNext()}" class="item-pagination flex-c-m trans-0-4">▷</a>
 						</div>
 					</div>
