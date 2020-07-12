@@ -586,7 +586,7 @@
 					<!-- Block3 -->
 					<div class="col-lg-6 col-md-12  blo3 flex-w flex-col-l-sm m-b-30 p-l-50" th:each="staff:${staffList}">
 						<div class="pic-blo3 size20 bo-rad-10 hov-img-zoom m-r-28 ">
-							<a th:href="@{/staff/__${staff.id}__}"><img th:src="${'/img/'+staff.avatar}" alt="IMG-MENU"></a>
+							<a th:href="@{/staff/view/__${staff.id}__}"><img th:src="${'/img/'+staff.avatar}" alt="IMG-MENU"></a>
 						</div>
 
 						<div class="text-blo3 size21 flex-col-l-m">

@@ -71,7 +71,7 @@ public class StaffController {
         return mv;
     }
 
-    @GetMapping("{id}")
+    @GetMapping("view/{id}")
     public ModelAndView showStaffDetail(@PathVariable Long id){
         ModelAndView mv = new ModelAndView("staff/detail");
         Users user = userService.findOne(id);
