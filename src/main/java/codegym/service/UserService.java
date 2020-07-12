@@ -17,4 +17,6 @@ public interface UserService {
     Users delete(Long id);
 
     Page<Users> findAllByRoleEquals(Role role, Pageable pageable);
+
+    Users findUsersByUserName(String username);
 }
